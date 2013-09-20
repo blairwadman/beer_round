@@ -1,0 +1,5 @@
+; $Id$
+name = Beer Round
+description = Module which determines who is in the beer round
+core = 7.x
+package = Other

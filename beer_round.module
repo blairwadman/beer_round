@@ -1,0 +1,34 @@
+<?php
+/**
+ * @file
+ * Module file for beer_round
+ */
+
+/**
+ * Implements hook_menu.
+ */
+function beer_round_menu() {
+  $items = array();
+
+  $items['beer'] = array(
+    'title' => 'Beer round',
+    'page callback' => 'beer_round_callback',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
+
+  return $items;
+
+}
+
+/**
+ * List of people included in a round of beer.
+ */
+function beer_round_callback() {
+  $round = array('Dave', 'Paolo', 'Andrew', 'Mat', 'Paula', 'Mihhail', 'Pete', 'Dima', 'Bhavna', 'Laura', 'Steve', 'San', 'Nick');
+  $round_more = module_invoke_all('beer_round');
+  $round_all = array_merge($round, $round_more);
+  $output = theme('item_list', array('items' => $round_all));
+
+  return $output;
+}
